@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Qog'oz Eslatma — Vintage Mobile Notes</title>
+  <meta name="description" content="Klassik qog'ozda eslatmalar va vazifalar ro'yxatini yuritish uchun qulay mobil ilova">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Desktop Background -->
+  <div class="ambient-backdrop">
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+  </div>
+
+  <!-- Desktop Controls & Device Frame Wrapper -->
+  <main class="app-viewport">
+    
+    <!-- Desktop Top Toolbar (for switching view modes) -->
+    <header class="desktop-header">
+      <div class="desktop-brand">
+        <span class="brand-icon">📜</span>
+        <div>
+          <h1 class="brand-title">Qog'oz Eslatma</h1>
+          <p class="brand-subtitle">Vintage Mobile Notes App</p>
+        </div>
+      </div>
+      <div class="desktop-actions">
+        <button id="toggle-frame-btn" class="desk-btn" title="Telefon ramkasini yoqish/o'chirish">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"></rect><line x1="12" y1="18" x2="12" y2="18.01"></line></svg>
+          <span>Telefon ko'rinishi</span>
+        </button>
+        <button id="toggle-sound-btn" class="desk-btn" title="Tovushlarni yoqish/o'chirish">
+          <svg class="sound-on-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+          <svg class="sound-off-icon hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          <span class="sound-text">Ovoz: Yoqilgan</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Device Frame Container -->
+    <div class="phone-frame" id="phoneFrame">
+      <!-- Phone Hardware Details -->
+      <div class="phone-speaker"></div>
+      <div class="phone-camera"></div>
+
+      <!-- Phone Screen (Mobile App Root) -->
+      <div class="phone-screen" id="phoneScreen">
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+          <span class="status-time" id="statusTime">09:41</span>
+          <div class="status-notch">
+            <span class="notch-sensor"></span>
+          </div>
+          <div class="status-icons">
+            <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor"><path d="M1 9.5h1.5v-2H1v2zm3 0h1.5v-4H4v4zm3 0h1.5v-6H7v6zm3 0h1.5v-8H10v8zm3 0h1.5V0H13v9.5z"/></svg>
+            <svg width="15" height="11" viewBox="0 0 16 12" fill="currentColor"><path d="M8 2.5C10.7 2.5 13.1 3.6 14.9 5.4L16 4.2C13.9 2.1 11.1 0.8 8 0.8 4.9 0.8 2.1 2.1 0 4.2L1.1 5.4C2.9 3.6 5.3 2.5 8 2.5zm0 3.3c1.8 0 3.4 0.8 4.6 2l1.1-1.2C12.3 5.1 10.3 4.1 8 4.1 5.7 4.1 3.7 5.1 2.3 6.6L3.4 7.8C4.6 6.6 6.2 5.8 8 5.8zm0 3.4c-1 0-1.8.8-1.8 1.8 0 1 .8 1.8 1.8 1.8 1 0 1.8-.8 1.8-1.8 0-1-.8-1.8-1.8-1.8z"/></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12" fill="currentColor"><rect x="1" y="1" width="18" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="3" width="12" height="6" rx="1.5"/><path d="M21 4.5v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- TOP NAVIGATION BAR (Qo'shish & Saqlanganlar button) -->
+        <nav class="top-nav-bar" id="topNavBar">
+          <!-- + YANGI NOTE BUTTON -->
+          <button id="add-note-btn" class="nav-action-btn primary-btn" title="Yangi eslatma qo'shish">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Qo'shish</span>
+          </button>
+
+          <!-- CLIPBOARD LOGO / APP TITLE -->
+          <div class="nav-brand-center" id="brandCenter">
+            <span class="clip-shine-pip"></span>
+            <span class="brand-text">PENCO NOTE</span>
+          </div>
+
+          <!-- SAQLANGAN NOTELAR BUTTON -->
+          <button id="open-saved-btn" class="nav-action-btn secondary-btn" title="Saqlangan eslatmalarni ko'rish">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+            <span>Saqlanganlar</span>
+            <span class="badge-count" id="notesCountBadge">0</span>
+          </button>
+        </nav>
+
+        <!-- MAIN CLIPBOARD DISPLAY (Uses b.jpg as authentic canvas) -->
+        <div class="clipboard-container" id="clipboardContainer">
+          
+          <!-- Background image of clipboard and paper -->
+          <div class="clipboard-bg-layer" style="background-image: url('b.jpg');"></div>
+
+          <!-- Interactive Paper Surface overlayed directly on the paper area of b.jpg -->
+          <div class="paper-surface" id="paperSurface">
+            
+            <!-- Paper Header: Clean Date Stamp -->
+            <div class="paper-header">
+              <div class="paper-meta-left">
+                <span class="paper-date-stamp" id="paperDateStamp">22-Oktabr, 2026</span>
+                <span class="paper-time-stamp" id="paperTimeStamp">10:15</span>
+              </div>
+              <button id="telegram-config-btn" class="telegram-mini-badge" title="Telegram Bot sozlamalari">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.93-1.28 4.88-2.12 5.86-2.54 2.79-1.16 3.37-1.36 3.75-1.36.08 0 .28.02.4.12.1.08.13.19.14.27-.01.06.01.24 0 .34z"/>
+                </svg>
+                <span id="tgConfigStatus">Telegram</span>
+              </button>
+            </div>
+
+            <!-- Note Title Field -->
+            <div class="paper-title-wrapper">
+              <input type="text" id="noteTitleInput" class="paper-title-input" placeholder="Sarlavha..." maxlength="80" autocomplete="off" spellcheck="false">
+              <div class="paper-title-underline"></div>
+            </div>
+
+            <!-- PURE SIMPLE PAPER WRITING AREA -->
+            <div class="paper-body-content" id="paperBodyContent">
+              <textarea id="noteTextInput" class="paper-textarea font-caveat" placeholder="Bu yerda qog'ozga yozing..." spellcheck="false"></textarea>
+            </div>
+
+            <!-- QOG'OZ PASTIDAGI 'JO'NATISH' BUTTONI -->
+            <div class="paper-bottom-action">
+              <button id="sendTelegramBtn" class="send-telegram-btn" title="Telegramga yuborish">
+                <svg class="tg-send-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.93-1.28 4.88-2.12 5.86-2.54 2.79-1.16 3.37-1.36 3.75-1.36.08 0 .28.02.4.12.1.08.13.19.14.27-.01.06.01.24 0 .34z"/>
+                </svg>
+                <span>Jo'natish</span>
+              </button>
+            </div>
+
+          </div> <!-- /paper-surface -->
+        </div> <!-- /clipboard-container -->
+
+        <!-- SAQLANGAN NOTELAR DRAWER / MODAL (The Vault / Storage place) -->
+        <div class="saved-drawer-overlay" id="savedDrawerOverlay">
+          <div class="saved-drawer-sheet" id="savedDrawerSheet">
+            
+            <!-- Drawer Drag Handle -->
+            <div class="drawer-drag-pill" id="drawerDragHandle"></div>
+
+            <!-- Drawer Header -->
+            <div class="drawer-header">
+              <div class="drawer-title-box">
+                <h2 class="drawer-title">Saqlangan Notelar</h2>
+                <span class="drawer-subtitle" id="drawerNotesCount">Jami: 0 ta eslatma</span>
+              </div>
+              <button class="drawer-close-btn" id="closeDrawerBtn" title="Yopish">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+            </div>
+
+            <!-- Drawer Search Bar -->
+            <div class="drawer-search-wrapper">
+              <div class="search-input-box">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="drawerSearchInput" placeholder="Eslatmalardan qidirish..." autocomplete="off">
+                <button id="clearSearchBtn" class="clear-search-btn hidden">✕</button>
+              </div>
+            </div>
+
+            <!-- Saved Notes List -->
+            <div class="drawer-notes-list" id="drawerNotesList">
+              <!-- Dynamically populated saved note cards -->
+            </div>
+
+            <!-- Drawer Bottom Actions -->
+            <div class="drawer-footer">
+              <button class="drawer-new-note-btn" id="drawerNewNoteBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <span>Yangi eslatma ochish</span>
+              </button>
+            </div>
+
+          </div> <!-- /saved-drawer-sheet -->
+        </div> <!-- /saved-drawer-overlay -->
+
+        <!-- Telegram Config Modal -->
+        <div class="tg-modal-overlay" id="tgModalOverlay">
+          <div class="tg-modal-card">
+            <div class="tg-modal-header">
+              <div class="tg-modal-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#2AABEE">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.93-1.28 4.88-2.12 5.86-2.54 2.79-1.16 3.37-1.36 3.75-1.36.08 0 .28.02.4.12.1.08.13.19.14.27-.01.06.01.24 0 .34z"/>
+                </svg>
+                <h3>Telegram Sozlamalari</h3>
+              </div>
+              <button class="tg-modal-close" id="closeTgModalBtn">✕</button>
+            </div>
+            <p class="tg-modal-info">Eslatmalarni Telegram botingiz orqali kanal yoki shaxsiy chatga yuborish uchun quyidagi maydonlarni to'ldiring (bo'sh qolsa, Telegram orqali ulashish oynasi ochiladi):</p>
+            <div class="tg-field-group">
+              <label for="tgBotTokenInput">Bot Token:</label>
+              <input type="text" id="tgBotTokenInput" placeholder="Masalan: 7123456789:AA..." autocomplete="off">
+            </div>
+            <div class="tg-field-group">
+              <label for="tgChatIdInput">Chat ID yoki @kanal_nomi:</label>
+              <input type="text" id="tgChatIdInput" placeholder="Masalan: 123456789 yoki @kanalim" autocomplete="off">
+            </div>
+            <div class="tg-modal-actions">
+              <button id="saveTgSettingsBtn" class="tg-save-btn">Saqlash</button>
+              <button id="testTgBtn" class="tg-test-btn">Sinov xabari yuborish</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notification Toast -->
+        <div class="toast-container" id="toastContainer">
+          <div class="toast-card" id="toastCard">
+            <span class="toast-icon">✨</span>
+            <span class="toast-message" id="toastMessage">Xabar</span>
+          </div>
+        </div>
+
+        <!-- Phone Home Bar (Bottom gesture indicator) -->
+        <div class="home-indicator-bar"></div>
+
+      </div> <!-- /phone-screen -->
+    </div> <!-- /phone-frame -->
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
